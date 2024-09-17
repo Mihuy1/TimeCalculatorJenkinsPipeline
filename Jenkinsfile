@@ -1,33 +1,30 @@
-
 pipeline {
     agent any
-
+    tools {
+        maven 'Maven'
+    }
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Mihuy1/TimeCalculatorJenkinsPipeline'
+                git branch: 'main', url: 'https://github.com/Mihuy1/TimeCalculatorJenkinsPipeline'
             }
         }
-
         stage('Build') {
             steps {
                 sh 'mvn clean install'
             }
         }
-
         stage('Test') {
             steps {
                 sh 'mvn test'
             }
         }
-
         stage('Code Coverage') {
             steps {
                 jacoco execPattern: '**/target/jacoco.exec'
             }
         }
     }
-
     post {
         always {
             junit '**/target/surefire-reports/*.xml'
