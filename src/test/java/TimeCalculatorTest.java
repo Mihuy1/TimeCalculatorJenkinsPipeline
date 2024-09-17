@@ -1,4 +1,3 @@
-package org.otp1;
 
 import org.junit.Test;
 

@@ -1,4 +1,3 @@
-package org.otp1;
 
 public class TimeCalculator {
     public double calculateTime(double distance, double speed) {
